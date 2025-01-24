@@ -3,15 +3,16 @@ import FigmaLogo from "./FigmaLogo";
 import Link from "next/link";
 import ConfigLogo from "./ConfigLogo";
 import World from "./icons/World";
+import FadeText from "./FadeText";
 
 function Footer() {
   return (
     <footer
-      className="bg-[#252525] text-[#D5E1E1] relative h-[705px]"
+      className="bg-[#252525] text-[#D5E1E1] relative h-[730px]"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
-      <div className="relative h-[calc(100vh+705px)] -top-[100vh]">
-        <div className="sticky top-[calc(100vh-705px)] h-[705px]">
+      <div className="relative h-[calc(100vh+730px)] -top-[100vh]">
+        <div className="sticky top-[calc(100vh-730px)] h-[730px]">
           <div className="max-w-[1440px] mx-auto px-[90px] pt-20 pb-8">
             <div className="flex justify-between">
               <FigmaLogo />
@@ -22,17 +23,17 @@ function Footer() {
                     <li>
                       <Link
                         href="/speakers"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        Speakers
+                        <FadeText>Speakers</FadeText>
                       </Link>
                     </li>
                     <li>
                       <Link
                         href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        Get tickets
+                        <FadeText>Get tickets</FadeText>
                       </Link>
                     </li>
                   </ul>
@@ -43,49 +44,49 @@ function Footer() {
                     <li>
                       <Link
                         href="/speakers"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        Why attend
+                        <FadeText>Why attend</FadeText>
                       </Link>
                     </li>
                     <li>
                       <Link
                         href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        FAQ
+                        <FadeText>FAQ</FadeText>
                       </Link>
                     </li>
                     <li>
                       <Link
                         href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        Sponsors
+                        <FadeText>Sponsors</FadeText>
                       </Link>
                     </li>
                     <li>
                       <Link
                         href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        Hotels
+                        <FadeText>Hotels</FadeText>
                       </Link>
                     </li>
                     <li>
                       <Link
                         href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        Visa letters
+                        <FadeText>Visa letters</FadeText>
                       </Link>
                     </li>
                     <li>
                       <Link
                         href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        Code of conduct
+                        <FadeText>Code of conduct</FadeText>
                       </Link>
                     </li>
                   </ul>
@@ -96,33 +97,33 @@ function Footer() {
                     <li>
                       <Link
                         href="/speakers"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        X
+                        <FadeText>X</FadeText>
                       </Link>
                     </li>
                     <li>
                       <Link
                         href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        LinkedIn
+                        <FadeText>LinkedIn</FadeText>
                       </Link>
                     </li>
                     <li>
                       <Link
                         href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        Instagram
+                        <FadeText>Instagram</FadeText>
                       </Link>
                     </li>
                     <li>
                       <Link
                         href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed"
+                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
                       >
-                        YouTube
+                        <FadeText>YouTube</FadeText>
                       </Link>
                     </li>
                   </ul>
