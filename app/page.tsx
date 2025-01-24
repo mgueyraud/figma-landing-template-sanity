@@ -11,33 +11,22 @@ import Dell from "@/components/icons/Dell";
 import Adidas from "@/components/icons/Adidas";
 import Cinemark from "@/components/icons/Cinemark";
 import EA from "@/components/icons/EA";
+import AnimatedNumber from "@/components/AnimatedNumber";
+import Navbar from "@/components/Navbar";
 
-export default function Home() {
+export default function Page() {
   return (
-    <>
-      <nav className="max-w-[1440px] mx-auto px-[90px] py-8 flex justify-between items-center ">
-        <div className="uppercase">
-          Figma’s conference for people <br /> who build products
-        </div>
-        <ul className="flex items-center gap-6">
-          <li>
-            <Link
-              href="/speakers"
-              className="uppercase border-[#252525] border-b-2 border-dashed"
-            >
-              Speakers
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/speakers"
-              className="uppercase px-8 py-5 bg-[#252525] text-[#D5E1E1] rounded-[60px]"
-            >
-              Get tickets
-            </Link>
-          </li>
-        </ul>
-      </nav>
+    <div className="bg-[#D5E1E1] text-[#171717]">
+      <Navbar
+        text="Figma's conference for people who build products"
+        style={
+          {
+            "--border-nav-color": "#252525",
+            "--button-bg-color": "#252525",
+            "--button-text-color": "#D5E1E1",
+          } as React.CSSProperties
+        }
+      />
       <header className="">
         <div className="max-w-[1440px] mx-auto px-[90px]">
           <div className="size-3 bg-[#252525] rotate-45"></div>
@@ -103,10 +92,28 @@ export default function Home() {
               See all speakers
             </Link>
           </div>
-          <div className="font-light text-[94px]">
-            <p>75 + Speakers</p>
-            <p>50 + Sessions</p>
-            <p>8,000 + Attendees</p>
+          <div className="font-light text-[94px] flex-1">
+            <div>
+              <AnimatedNumber
+                value={75}
+                suffixText="+ Speakers"
+                initialValue={10}
+              />
+            </div>
+            <div>
+              <AnimatedNumber
+                value={50}
+                suffixText="+ Sessions"
+                initialValue={10}
+              />
+            </div>
+            <div>
+              <AnimatedNumber
+                initialValue={1000}
+                value={8000}
+                suffixText="+ Attendees"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -162,6 +169,6 @@ export default function Home() {
         </div>
       </section>
       <Footer />
-    </>
+    </div>
   );
 }
