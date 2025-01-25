@@ -5,11 +5,9 @@ import { useInView } from "motion/react";
 import { motion } from "motion/react";
 
 export default function AnimatedNumber({
-  initialValue = 0,
   value,
   suffixText,
 }: {
-  initialValue?: number;
   value: number;
   suffixText: string;
 }) {
@@ -23,7 +21,7 @@ export default function AnimatedNumber({
   return (
     <div ref={ref} className="inline-block">
       <NumberFlow
-        value={isInView ? value : initialValue}
+        value={isInView ? value : 0}
         trend={0}
         transformTiming={{ duration: 1000 }}
       />

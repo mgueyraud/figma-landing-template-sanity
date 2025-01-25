@@ -82,6 +82,7 @@ function Page() {
           </div>
         </div>
       </main>
+      <hr className="border-none h-4 w-full bg-[url('\/separator-registration.svg')]" />
       <Footer />
     </div>
   );

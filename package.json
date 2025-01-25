@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@base-ui-components/react": "1.0.0-alpha.5",
     "@number-flow/react": "^0.5.5",
     "@sanity/image-url": "1",
     "@sanity/vision": "3",

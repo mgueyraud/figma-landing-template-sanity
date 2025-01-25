@@ -94,25 +94,13 @@ export default function Page() {
           </div>
           <div className="font-light text-[94px] flex-1">
             <div>
-              <AnimatedNumber
-                value={75}
-                suffixText="+ Speakers"
-                initialValue={10}
-              />
+              <AnimatedNumber value={75} suffixText="+ Speakers" />
             </div>
             <div>
-              <AnimatedNumber
-                value={50}
-                suffixText="+ Sessions"
-                initialValue={10}
-              />
+              <AnimatedNumber value={50} suffixText="+ Sessions" />
             </div>
             <div>
-              <AnimatedNumber
-                initialValue={1000}
-                value={8000}
-                suffixText="+ Attendees"
-              />
+              <AnimatedNumber value={8000} suffixText="+ Attendees" />
             </div>
           </div>
         </div>
@@ -168,6 +156,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <hr className="border-none h-4 w-full bg-[url('\/separator-home.svg')]" />
       <Footer />
     </div>
   );

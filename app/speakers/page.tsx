@@ -69,6 +69,7 @@ function Page() {
           </button>
         </div>
       </section>
+      <hr className="border-none h-4 w-full bg-[url('\/separator-speakers.svg')]" />
       <Footer />
     </div>
   );
