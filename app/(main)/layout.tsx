@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { draftMode } from "next/headers";
 import SmoothScroll from "@/components/SmoothScroll";
+import { DisableDraftMode } from "@/components/DisableDraftMode";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,7 +29,12 @@ export default async function RootLayout({
         {children}
         <SmoothScroll />
         <SanityLive />
-        {(await draftMode()).isEnabled && <VisualEditing />}
+        {(await draftMode()).isEnabled && (
+          <>
+            <VisualEditing />
+            <DisableDraftMode />
+          </>
+        )}
       </body>
     </html>
   );

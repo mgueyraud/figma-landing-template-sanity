@@ -2,10 +2,21 @@ import ConfigLogo from "@/components/ConfigLogo";
 import Footer from "@/components/Footer";
 import HourGlass from "@/components/icons/HourGlass";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
+import Speaker from "@/components/Speaker";
+import { sanityFetch } from "@/sanity/lib/live";
+import {
+  SPEAKERS_QUERY,
+  type Speaker as SpeakerType,
+} from "@/sanity/queries/speakers";
 import Link from "next/link";
+import React from "react";
 
-function Page() {
+async function Page() {
+  const { data: speakers }: { data: SpeakerType[] } = await sanityFetch({
+    query: SPEAKERS_QUERY,
+    tag: "speakers",
+  });
+
   return (
     <div className="bg-[#0C5238] text-[#FFF5DA]">
       <Navbar
@@ -39,29 +50,9 @@ function Page() {
           </p>
         </div>
         <div className="mt-20 grid grid-cols-2 gap-x-16 gap-y-8">
-          {Array(24)
-            .fill(0)
-            .map((_, i) => (
-              <div key={i}>
-                <div className="flex gap-14">
-                  <Image
-                    src="/profile.png"
-                    alt="Jesper Kouthoofd"
-                    width={150}
-                    height={150}
-                  />
-                  <div>
-                    <p className="font-light text-2xl">Jesper Kouthoofd</p>
-                    <p className="text-sm mt-1">He/him</p>
-                    <p className="mt-2 uppercase">
-                      Head of Design & Chief Executive Officer at Teenage
-                      Engineering
-                    </p>
-                  </div>
-                </div>
-                <hr className="border-[#FFF5DA]/60 mt-8" />
-              </div>
-            ))}
+          {speakers.map((speaker) => (
+            <Speaker key={speaker._id} {...speaker} />
+          ))}
         </div>
         <div className="mt-20 mb-32 flex justify-center">
           <button className="inline-block rounded-[80px] font-light uppercase py-5 px-8 border-dashed border-2 border-[#FFF5DA]">
