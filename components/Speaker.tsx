@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { Speaker as SpeakerProps } from "@/sanity/queries/speakers";
+import { Speaker as SpeakerProps } from "@/types/speakers";
 
 const Speaker = ({ name, pronouns, title, image }: SpeakerProps) => {
   return (

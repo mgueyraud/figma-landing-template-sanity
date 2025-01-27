@@ -4,15 +4,13 @@ import HourGlass from "@/components/icons/HourGlass";
 import Navbar from "@/components/Navbar";
 import Speaker from "@/components/Speaker";
 import { sanityFetch } from "@/sanity/lib/live";
-import {
-  SPEAKERS_QUERY,
-  type Speaker as SpeakerType,
-} from "@/sanity/queries/speakers";
+import { SPEAKERS_QUERY } from "@/sanity/queries/speakers";
+import { Speaker as SpeakerT } from "@/types/speakers";
 import Link from "next/link";
 import React from "react";
 
 async function Page() {
-  const { data: speakers }: { data: SpeakerType[] } = await sanityFetch({
+  const { data: speakers }: { data: SpeakerT[] } = await sanityFetch({
     query: SPEAKERS_QUERY,
     tag: "speakers",
   });

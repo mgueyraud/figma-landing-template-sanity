@@ -3,14 +3,14 @@ import Footer from "@/components/Footer";
 import HourGlass from "@/components/icons/HourGlass";
 import Navbar from "@/components/Navbar";
 import SponsorCard from "@/components/SponsorCard";
-import { SPONSORS_QUERYResult } from "@/sanity.types";
 import { sanityFetch } from "@/sanity/lib/live";
 import { SPONSORS_QUERY } from "@/sanity/queries/sponsors";
+import { SponsorCategory } from "@/types/sponsors";
 import Link from "next/link";
 import React from "react";
 
 async function Page() {
-  const { data: sponsorsCategory }: { data: SPONSORS_QUERYResult } =
+  const { data: sponsorsCategory }: { data: SponsorCategory[] } =
     await sanityFetch({
       query: SPONSORS_QUERY,
       tag: "sponsorsCategory",
