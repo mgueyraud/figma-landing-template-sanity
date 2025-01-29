@@ -1,9 +1,11 @@
+import { HeartIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export const sponsorsPage = defineType({
   name: 'sponsorsPage',
   title: 'Sponsors Page',
   type: 'document',
+  icon: HeartIcon,
   fields: [
     defineField({
       name: 'title',

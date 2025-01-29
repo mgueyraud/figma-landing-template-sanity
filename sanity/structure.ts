@@ -18,6 +18,7 @@ export const structure: StructureResolver = (S) =>
             singleton(S, SINGLETONS.home),
             singleton(S, SINGLETONS.sponsorsPage),
             singleton(S, SINGLETONS.speakersPage),
+            singleton(S, SINGLETONS.ticketsPage)
           ]),
       ),
 
@@ -26,6 +27,7 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('speaker'),
       S.documentTypeListItem('sponsor'),
       S.documentTypeListItem('sponsorCategory'),
+      S.documentTypeListItem('ticket'),
       
       S.divider(),
 

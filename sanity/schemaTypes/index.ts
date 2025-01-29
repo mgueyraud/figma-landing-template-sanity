@@ -7,7 +7,21 @@ import { seoType } from './seo'
 import { home } from './home'
 import { sponsorsPage } from './sponsorsPage'
 import { speakersPage } from './speakersPage'
+import { ticket } from './ticket'
+import { ticketsPage } from './ticketsPage'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [sponsor, sponsorCategory, speaker, footer, navbar, seoType, home, sponsorsPage, speakersPage],
+  types: [
+    sponsor, 
+    sponsorCategory, 
+    speaker, 
+    footer, 
+    navbar, 
+    seoType, 
+    home, 
+    sponsorsPage, 
+    speakersPage, 
+    ticket,
+    ticketsPage
+  ],
 }

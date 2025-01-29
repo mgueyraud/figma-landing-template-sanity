@@ -41,6 +41,9 @@ dependencies:
   sanity:
     specifier: '3'
     version: 3.71.2(@types/node@20.17.16)(@types/react@19.0.8)(react-dom@19.0.0)(react@19.0.0)(styled-components@6.1.14)(typescript@5.7.3)
+  spin-delay:
+    specifier: ^2.0.1
+    version: 2.0.1(react@19.0.0)
   styled-components:
     specifier: '6'
     version: 6.1.14(react-dom@19.0.0)(react@19.0.0)
@@ -10113,6 +10116,14 @@ packages:
 
   /speedometer@1.0.0:
     resolution: {integrity: sha512-lgxErLl/7A5+vgIIXsh9MbeukOaCb2axgQ+bKCdIE+ibNT4XNYGNCR1qFEGq6F+YDASXK3Fh/c5FgtZchFolxw==}
+    dev: false
+
+  /spin-delay@2.0.1(react@19.0.0):
+    resolution: {integrity: sha512-ilggKXKqAMwk21PSYvxuF/KCnrsGFDrnO6mXa629mj8fvfo+dOQfubDViqsRjRX5U1jd3Xb8FTsV+m4Tg7YeUg==}
+    peerDependencies:
+      react: '>=17.0.1'
+    dependencies:
+      react: 19.0.0
     dev: false
 
   /split2@4.2.0:

@@ -61,3 +61,25 @@ export const HOME_QUERY = defineQuery(`
       }
   }
 `);
+
+export const TICKETS_PAGE_QUERY = defineQuery(`*[_type == "ticketsPage"][0] {
+  title,
+  sections[] {
+    _key,
+    title,
+    tickets[]-> {
+      _id,
+      title,
+      description,
+      currentPrice,
+      hasDiscount,
+      originalPrice,
+      priceSubtext
+    }
+  },
+  seo {
+    title,
+    description,
+    image
+  }
+}`);

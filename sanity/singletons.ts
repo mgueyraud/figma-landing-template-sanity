@@ -6,28 +6,30 @@ type Singleton = {
   title: string;
 };
 
-export const SINGLETONS: {
-  [key: string]: Singleton;
-} = {
-  footer: {
-    _type: "footer",
-    title: "Footer",
-  },
-  navbar: {
-    _type: "navbar",
-    title: "Navbar",
-  },
+export const SINGLETONS = {
   home: {
-    _type: "home",
-    title: "Home Page",
+    title: 'Home',
+    _type: 'home',
   },
   sponsorsPage: {
-    _type: "sponsorsPage",
-    title: "Sponsors Page",
+    title: 'Sponsors Page',
+    _type: 'sponsorsPage',
   },
   speakersPage: {
-    _type: "speakersPage",
-    title: "Speakers Page",
+    title: 'Speakers Page',
+    _type: 'speakersPage',
+  },
+  ticketsPage: {
+    title: 'Tickets Page',
+    _type: 'ticketsPage',
+  },
+  navbar: {
+    title: 'Navigation',
+    _type: 'navbar',
+  },
+  footer: {
+    title: 'Footer',
+    _type: 'footer',
   },
 } as const;
 
