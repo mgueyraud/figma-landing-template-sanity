@@ -6,6 +6,8 @@ type Singleton = {
   title: string;
 };
 
+export type SingletonType = (typeof SINGLETONS)[keyof typeof SINGLETONS]["_type"];
+
 export const SINGLETONS = {
   home: {
     title: 'Home',

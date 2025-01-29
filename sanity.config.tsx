@@ -13,7 +13,11 @@ import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schemaTypes";
 import { disableCreationDocumentTypes, structure } from "./sanity/structure";
 import { presentationTool } from "sanity/presentation";
-import { singletonActions, singletonsTypes } from "./sanity/singletons";
+import {
+  singletonActions,
+  singletonsTypes,
+  SingletonType,
+} from "./sanity/singletons";
 
 const FigmaLogo = () => {
   return (
@@ -46,13 +50,15 @@ export default defineConfig({
     templates: (templates) =>
       templates?.filter(
         (template) =>
-          !disableCreationDocumentTypes?.includes(template.schemaType)
+          !disableCreationDocumentTypes?.includes(
+            template.schemaType as (typeof disableCreationDocumentTypes)[number]
+          )
       ),
     types: schema.types,
   },
   document: {
     actions: (input, context) =>
-      singletonsTypes.has(context.schemaType)
+      singletonsTypes.has(context.schemaType as SingletonType)
         ? input.filter(({ action }) =>
             !isDev && action ? singletonActions.has(action) : true
           )
