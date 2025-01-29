@@ -7,3 +7,14 @@ export type Speaker = {
     title: string;
     image: SanityImageSource;
 }
+
+export type SpeakersResponse = {
+    speakers: {
+        _id: string;
+        name: string;
+        pronouns: string;
+        title: string;
+        image: SanityImageSource;
+    }[];
+    total: number;
+}

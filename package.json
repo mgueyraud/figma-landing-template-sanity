@@ -6,11 +6,13 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "tsx seed/speakers.ts"
   },
   "dependencies": {
     "@base-ui-components/react": "1.0.0-alpha.5",
     "@number-flow/react": "^0.5.5",
+    "@sanity/icons": "^3.5.7",
     "@sanity/image-url": "1",
     "@sanity/vision": "3",
     "lenis": "^1.1.20",
@@ -20,13 +22,15 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sanity": "3",
-    "styled-components": "6"
+    "styled-components": "6",
+    "tsx": "^4.19.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^16.4.7",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",

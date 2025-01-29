@@ -4,8 +4,15 @@ import Link from "next/link";
 import ConfigLogo from "./ConfigLogo";
 import World from "./icons/World";
 import FadeText from "./FadeText";
+import { sanityFetch } from "@/sanity/lib/live";
+import { FOOTER_QUERY } from "@/sanity/queries/layout";
+import { type Footer } from "@/types/layout";
 
-function Footer() {
+async function Footer() {
+  const { data: footer }: { data: Footer } = await sanityFetch({
+    query: FOOTER_QUERY,
+  });
+
   return (
     <footer
       className="bg-[#252525] text-[#D5E1E1] relative h-[730px]"
@@ -17,117 +24,23 @@ function Footer() {
             <div className="flex justify-between">
               <FigmaLogo />
               <div className="flex gap-16">
-                <div className="flex flex-col gap-7">
-                  <p className="text-sm uppercase">Menu</p>
-                  <ul className="flex flex-col gap-3">
-                    <li>
-                      <Link
-                        href="/speakers"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>Speakers</FadeText>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>Get tickets</FadeText>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex flex-col gap-7">
-                  <p className="text-sm uppercase">Resources</p>
-                  <ul className="flex flex-col gap-3">
-                    <li>
-                      <Link
-                        href="/speakers"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>Why attend</FadeText>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>FAQ</FadeText>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>Sponsors</FadeText>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>Hotels</FadeText>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>Visa letters</FadeText>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>Code of conduct</FadeText>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex flex-col gap-7">
-                  <p className="text-sm uppercase">Follow</p>
-                  <ul className="flex flex-col gap-3">
-                    <li>
-                      <Link
-                        href="/speakers"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>X</FadeText>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>LinkedIn</FadeText>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>Instagram</FadeText>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/tickets"
-                        className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
-                      >
-                        <FadeText>YouTube</FadeText>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+                {footer.columns.map((column) => (
+                  <div key={column.title} className="flex flex-col gap-7">
+                    <p className="text-sm uppercase">{column.title}</p>
+                    <ul className="flex flex-col gap-3">
+                      {column.links.map((link) => (
+                        <li key={link.url + link.displayText}>
+                          <Link
+                            href={link.url}
+                            className="uppercase border-[#D5E1E1] border-b-2 border-dashed inline-block"
+                          >
+                            <FadeText>{link.displayText}</FadeText>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
             <ConfigLogo className="w-full h-full mt-20" />

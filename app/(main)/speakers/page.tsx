@@ -2,18 +2,34 @@ import ConfigLogo from "@/components/ConfigLogo";
 import Footer from "@/components/Footer";
 import HourGlass from "@/components/icons/HourGlass";
 import Navbar from "@/components/Navbar";
-import Speaker from "@/components/Speaker";
+import Speakers from "@/components/Speakers";
 import { sanityFetch } from "@/sanity/lib/live";
+import { SPEAKERS_PAGE_QUERY } from "@/sanity/queries/pages";
 import { SPEAKERS_QUERY } from "@/sanity/queries/speakers";
-import { Speaker as SpeakerT } from "@/types/speakers";
+import { SpeakersResponse } from "@/types/speakers";
+import { SpeakersPage } from "@/types/speakersPage";
+import { getMetadata } from "@/utils/getMetadata";
 import Link from "next/link";
 import React from "react";
 
+export const generateMetadata = async () => getMetadata("speakersPage");
+
 async function Page() {
-  const { data: speakers }: { data: SpeakerT[] } = await sanityFetch({
-    query: SPEAKERS_QUERY,
-    tag: "speakers",
-  });
+  const [{ data: speakersResponse }, { data: speakersPage }]: [
+    { data: SpeakersResponse },
+    { data: SpeakersPage },
+  ] = await Promise.all([
+    sanityFetch({
+      query: SPEAKERS_QUERY,
+      tag: "speakers",
+      params: {
+        page: 1,
+      },
+    }),
+    sanityFetch({
+      query: SPEAKERS_PAGE_QUERY,
+    }),
+  ]);
 
   return (
     <div className="bg-[#0C5238] text-[#FFF5DA]">
@@ -37,26 +53,13 @@ async function Page() {
             <HourGlass />
             <p className="uppercase">the lineup</p>
           </div>
-          <p className="font-light text-2xl mt-8">
-            More than 75 speakers from around the globe will join us at Config
-            2024 to share how they’re thinking, what they’re making, and
-            what&apos;s next.
-          </p>
-          <p className="mt-4">
-            Attendees will leave feeling more connected to a community of
-            builders and to the future of product development.
-          </p>
+          <p className="font-light text-2xl mt-8">{speakersPage.title}</p>
+          <p className="mt-4">{speakersPage.description}</p>
         </div>
-        <div className="mt-20 grid grid-cols-2 gap-x-16 gap-y-8">
-          {speakers.map((speaker) => (
-            <Speaker key={speaker._id} {...speaker} />
-          ))}
-        </div>
-        <div className="mt-20 mb-32 flex justify-center">
-          <button className="inline-block rounded-[80px] font-light uppercase py-5 px-8 border-dashed border-2 border-[#FFF5DA]">
-            Load more
-          </button>
-        </div>
+        <Speakers
+          speakers={speakersResponse.speakers}
+          total={speakersResponse.total}
+        />
       </section>
       <hr className="border-none h-4 w-full bg-[url('\/separator-speakers.svg')]" />
       <Footer />

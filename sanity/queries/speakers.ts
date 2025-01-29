@@ -1,12 +1,14 @@
 import { defineQuery } from "next-sanity";
 
 export const SPEAKERS_QUERY = defineQuery(`
-    *[_type == "speaker"] {
-        _id,
-        name,
-        pronouns,
-        title,
-        image
+    {
+        "speakers": *[_type == "speaker"] | order(_createdAt desc) [($page - 1) * 10...($page * 10)] {
+            _id,
+            name,
+            pronouns,
+            title,
+            image
+        },
+        "total": count(*[_type == "speaker"])
     }
 `)
-

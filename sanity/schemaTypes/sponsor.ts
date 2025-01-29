@@ -1,9 +1,12 @@
 import { defineField, defineType } from 'sanity'
+import { DiamondIcon } from '@sanity/icons'
+import { HeartIcon } from '@sanity/icons'
 
 export const sponsor = defineType({
   name: 'sponsor',
   title: 'Sponsor',
   type: 'document',
+  icon: HeartIcon,
   fields: [
     defineField({
       name: 'name',
@@ -35,6 +38,7 @@ export const sponsorCategory = defineType({
   name: 'sponsorCategory',
   title: 'Sponsor Category',
   type: 'document',
+  icon: DiamondIcon,
   fields: [
     defineField({
       name: 'name',

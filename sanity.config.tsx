@@ -5,14 +5,15 @@
  */
 
 import { visionTool } from "@sanity/vision";
-import { defineConfig } from "sanity";
+import { defineConfig, isDev } from "sanity";
 import { structureTool } from "sanity/structure";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schemaTypes";
-import { structure } from "./sanity/structure";
+import { disableCreationDocumentTypes, structure } from "./sanity/structure";
 import { presentationTool } from "sanity/presentation";
+import { singletonActions, singletonsTypes } from "./sanity/singletons";
 
 const FigmaLogo = () => {
   return (
@@ -41,7 +42,22 @@ export default defineConfig({
   dataset,
   icon: () => <FigmaLogo />,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
-  schema,
+  schema: {
+    templates: (templates) =>
+      templates?.filter(
+        (template) =>
+          !disableCreationDocumentTypes?.includes(template.schemaType)
+      ),
+    types: schema.types,
+  },
+  document: {
+    actions: (input, context) =>
+      singletonsTypes.has(context.schemaType)
+        ? input.filter(({ action }) =>
+            !isDev && action ? singletonActions.has(action) : true
+          )
+        : input,
+  },
   plugins: [
     structureTool({ structure }),
     // Vision is for querying with GROQ from inside the Studio

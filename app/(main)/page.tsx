@@ -3,18 +3,21 @@ import ConfigLogo from "@/components/ConfigLogo";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
-import Disney from "@/components/icons/Disney";
-import Atlassian from "@/components/icons/Atlassian";
-import Apple from "@/components/icons/Apple";
-import AirBnb from "@/components/icons/AirBnb";
-import Dell from "@/components/icons/Dell";
-import Adidas from "@/components/icons/Adidas";
-import Cinemark from "@/components/icons/Cinemark";
-import EA from "@/components/icons/EA";
 import AnimatedNumber from "@/components/AnimatedNumber";
 import Navbar from "@/components/Navbar";
+import { sanityFetch } from "@/sanity/lib/live";
+import { Home } from "@/types/home";
+import { urlFor } from "@/sanity/lib/image";
+import { HOME_QUERY } from "@/sanity/queries/pages";
+import { getMetadata } from "@/utils/getMetadata";
 
-export default function Page() {
+export const generateMetadata = async () => getMetadata("home");
+
+export default async function Page() {
+  const { data: home }: { data: Home } = await sanityFetch({
+    query: HOME_QUERY,
+  });
+
   return (
     <div className="bg-[#D5E1E1] text-[#171717]">
       <Navbar
@@ -31,14 +34,8 @@ export default function Page() {
         <div className="max-w-[1440px] mx-auto px-[90px]">
           <div className="size-3 bg-[#252525] rotate-45"></div>
           <div className="mt-6 flex items-center gap-20">
-            <p className="uppercase">
-              June 26-27 <br />
-              2024
-            </p>
-            <p className="uppercase">
-              Moscone Center <br />
-              San Francisco, CA
-            </p>
+            <p className="uppercase">{home.conferenceDate}</p>
+            <p className="uppercase">{home.location}</p>
           </div>
           <ConfigLogo className="w-full h-full mt-16" />
         </div>
@@ -58,18 +55,17 @@ export default function Page() {
               <p className="uppercase">Join Us</p>
             </div>
             <p className="font-light text-5xl mt-8">
-              Early bird tickets available now
+              {home.registrationBanner.title}
             </p>
             <p className="font-light text-2xl mt-6">
-              Register now to save 50% and be the first to reserve a seat at the
-              most popular talks.
+              {home.registrationBanner.description}
             </p>
           </div>
           <Link
-            href="#"
+            href={home.registrationBanner.cta.url}
             className="w-[630px] h-[242px] rounded-[300px] bg-[#0000FF] font-light text-5xl grid place-items-center"
           >
-            Get tickets
+            {home.registrationBanner.cta.displayText}
           </Link>
         </div>
       </section>
@@ -81,26 +77,33 @@ export default function Page() {
               <p className="uppercase">The lineup</p>
             </div>
             <p className="font-light text-2xl mt-8">
-              2024 will be the most exciting Config yet, with programming
-              designed to connect a dynamic community of builders to the future
-              of product development.
+              {home.lineupSection.text}
             </p>
             <Link
-              href="/speakers"
+              href={home.lineupSection.cta.url}
               className="mt-4 inline-block rounded-[80px] font-light uppercase py-5 px-8 border-dashed border-2 border-[#252525]"
             >
-              See all speakers
+              {home.lineupSection.cta.displayText}
             </Link>
           </div>
           <div className="font-light text-[94px] flex-1">
             <div>
-              <AnimatedNumber value={75} suffixText="+ Speakers" />
+              <AnimatedNumber
+                value={home.lineupSection.speakersCount}
+                suffixText="+ Speakers"
+              />
             </div>
             <div>
-              <AnimatedNumber value={50} suffixText="+ Sessions" />
+              <AnimatedNumber
+                value={home.lineupSection.sessionsCount}
+                suffixText="+ Sessions"
+              />
             </div>
             <div>
-              <AnimatedNumber value={8000} suffixText="+ Attendees" />
+              <AnimatedNumber
+                value={home.lineupSection.attendeesCount}
+                suffixText="+ Attendees"
+              />
             </div>
           </div>
         </div>
@@ -113,45 +116,34 @@ export default function Page() {
               <p className="uppercase">sponsors</p>
             </div>
             <p className="font-light text-5xl mt-8">
-              Thank you to our sponsors
+              {home.sponsorsSection.title}
             </p>
             <p className="font-light text-2xl mt-6">
-              We&apos;re excited to bring you an incredible Config experience,
-              made possible by the support of our sponsors.
+              {home.sponsorsSection.description}
             </p>
           </div>
           <div className="mt-16 grid grid-cols-4 gap-y-12 gap-x-16">
-            <div className="bg-[#f7ecd0] h-[11.25rem] w-full grid place-items-center">
-              <Disney className="max-w-20 grayscale contrast-100 brightness-100" />
-            </div>
-            <div className="bg-[#f7ecd0] h-[11.25rem] w-full grid place-items-center">
-              <Atlassian className="max-w-20 grayscale contrast-100 brightness-100" />
-            </div>
-            <div className="bg-[#f7ecd0] h-[11.25rem] w-full grid place-items-center">
-              <Apple className="max-w-20 grayscale contrast-100 brightness-100" />
-            </div>
-            <div className="bg-[#f7ecd0] h-[11.25rem] w-full grid place-items-center">
-              <AirBnb className="max-w-20 grayscale contrast-100 brightness-100" />
-            </div>
-            <div className="bg-[#f7ecd0] h-[11.25rem] w-full grid place-items-center">
-              <Dell className="max-w-20 grayscale contrast-100 brightness-100" />
-            </div>
-            <div className="bg-[#f7ecd0] h-[11.25rem] w-full grid place-items-center">
-              <Adidas className="max-w-20 grayscale contrast-100 brightness-100" />
-            </div>
-            <div className="bg-[#f7ecd0] h-[11.25rem] w-full grid place-items-center">
-              <Cinemark className="max-w-20 grayscale contrast-100 brightness-100" />
-            </div>
-            <div className="bg-[#f7ecd0] h-[11.25rem] w-full grid place-items-center">
-              <EA className="max-w-20 grayscale contrast-100 brightness-100" />
-            </div>
+            {home.sponsorsSection.sponsors.map((sponsor) => (
+              <div
+                key={sponsor._id}
+                className="bg-[#f7ecd0] h-[11.25rem] w-full grid place-items-center"
+              >
+                <Image
+                  src={urlFor(sponsor.logo).url()}
+                  alt={sponsor.name}
+                  width={80}
+                  className="drop-shadow-xl"
+                  height={80}
+                />
+              </div>
+            ))}
           </div>
           <div className="flex justify-center mt-16">
             <Link
-              href="/sponsors"
+              href={home.sponsorsSection.cta.url}
               className="mt-4 inline-block rounded-[80px] font-light uppercase py-5 px-8 border-dashed border-2 border-[#252525]"
             >
-              See all sponsors
+              {home.sponsorsSection.cta.displayText}
             </Link>
           </div>
         </div>

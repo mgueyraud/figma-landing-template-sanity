@@ -12,6 +12,7 @@ const Speaker = ({ name, pronouns, title, image }: SpeakerProps) => {
           alt={`Photo of ${name}`}
           width={150}
           height={150}
+          className="size-[150px]"
         />
         <div>
           <p className="font-light text-2xl">{name}</p>

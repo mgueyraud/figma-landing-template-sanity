@@ -4,17 +4,29 @@ import HourGlass from "@/components/icons/HourGlass";
 import Navbar from "@/components/Navbar";
 import SponsorCard from "@/components/SponsorCard";
 import { sanityFetch } from "@/sanity/lib/live";
+import { SPONSORS_PAGE_QUERY } from "@/sanity/queries/pages";
 import { SPONSORS_QUERY } from "@/sanity/queries/sponsors";
 import { SponsorCategory } from "@/types/sponsors";
+import { SponsorsPage } from "@/types/sponsorsPage";
+import { getMetadata } from "@/utils/getMetadata";
 import Link from "next/link";
 import React from "react";
 
+export const generateMetadata = async () => getMetadata("sponsorsPage");
+
 async function Page() {
-  const { data: sponsorsCategory }: { data: SponsorCategory[] } =
-    await sanityFetch({
+  const [{ data: sponsorsCategory }, { data: sponsorsPage }]: [
+    { data: SponsorCategory[] },
+    { data: SponsorsPage },
+  ] = await Promise.all([
+    sanityFetch({
       query: SPONSORS_QUERY,
       tag: "sponsorsCategory",
-    });
+    }),
+    sanityFetch({
+      query: SPONSORS_PAGE_QUERY,
+    }),
+  ]);
 
   return (
     <div className="bg-[#252525] text-[#FFF5DA]">
@@ -38,11 +50,8 @@ async function Page() {
             <HourGlass />
             <h1 className="uppercase">Sponsors</h1>
           </div>
-          <p className="font-light text-2xl mt-8">Thank you to our sponsors</p>
-          <p className="mt-4">
-            We&apos;re excited to bring you an incredible Config experience,
-            made possible by the generous support of our sponsors.
-          </p>
+          <p className="font-light text-2xl mt-8">{sponsorsPage.title}</p>
+          <p className="mt-4">{sponsorsPage.description}</p>
         </div>
 
         {sponsorsCategory.map((category, i) => (
