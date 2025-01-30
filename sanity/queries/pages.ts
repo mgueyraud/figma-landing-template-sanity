@@ -83,3 +83,22 @@ export const TICKETS_PAGE_QUERY = defineQuery(`*[_type == "ticketsPage"][0] {
     image
   }
 }`);
+
+export const FAQ_PAGE_QUERY = defineQuery(`*[_type == "faqPage"][0] {
+  pageTitle,
+  tabs[] {
+    _key,
+    tabName,
+    tabTitle,
+    questions[] {
+      _key,
+      questionText,
+      answerText
+    }
+  },
+  contactUsDescription,
+  contactUsCta {
+    displayText,
+    url
+  }
+}`);

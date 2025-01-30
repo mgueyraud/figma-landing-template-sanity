@@ -18,7 +18,8 @@ export const structure: StructureResolver = (S) =>
             singleton(S, SINGLETONS.home),
             singleton(S, SINGLETONS.sponsorsPage),
             singleton(S, SINGLETONS.speakersPage),
-            singleton(S, SINGLETONS.ticketsPage)
+            singleton(S, SINGLETONS.ticketsPage),
+            singleton(S, SINGLETONS.faqPage),
           ]),
       ),
 

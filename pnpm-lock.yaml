@@ -38,6 +38,9 @@ dependencies:
   react-dom:
     specifier: ^19.0.0
     version: 19.0.0(react@19.0.0)
+  react-use-measure:
+    specifier: ^2.1.1
+    version: 2.1.1(react-dom@19.0.0)(react@19.0.0)
   sanity:
     specifier: '3'
     version: 3.71.2(@types/node@20.17.16)(@types/react@19.0.8)(react-dom@19.0.0)(react@19.0.0)(styled-components@6.1.14)(typescript@5.7.3)
@@ -9238,6 +9241,17 @@ packages:
       react-compiler-runtime: 19.0.0-beta-decd7b8-20250118(react@19.0.0)
       rxjs: 7.8.1
       use-effect-event: 1.0.2(react@19.0.0)
+    dev: false
+
+  /react-use-measure@2.1.1(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-nocZhN26cproIiIduswYpV5y5lQpSQS1y/4KuvUCjSKmw7ZWIS/+g3aFnX3WdBkyuGUtTLif3UTqnLLhbDoQig==}
+    peerDependencies:
+      react: '>=16.13'
+      react-dom: '>=16.13'
+    dependencies:
+      debounce: 1.2.1
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
     dev: false
 
   /react@19.0.0:

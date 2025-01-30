@@ -25,6 +25,10 @@ export const SINGLETONS = {
     title: 'Tickets Page',
     _type: 'ticketsPage',
   },
+  faqPage: {
+    title: 'FAQ Page',
+    _type: 'faqPage'
+  },
   navbar: {
     title: 'Navigation',
     _type: 'navbar',
