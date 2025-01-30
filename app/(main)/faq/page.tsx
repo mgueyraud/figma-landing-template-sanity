@@ -9,6 +9,9 @@ import { FaqPage } from "@/types/faqPage";
 import { sanityFetch } from "@/sanity/lib/live";
 import { FAQ_PAGE_QUERY } from "@/sanity/queries/pages";
 import Questions from "@/components/Questions";
+import { getMetadata } from "@/utils/getMetadata";
+
+export const generateMetadata = async () => getMetadata("faqPage");
 
 async function Page() {
   const { data: faqPage }: { data: FaqPage } = await sanityFetch({

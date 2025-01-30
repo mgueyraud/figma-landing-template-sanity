@@ -6,8 +6,11 @@ import Ticket from "@/components/Ticket";
 import { sanityFetch } from "@/sanity/lib/live";
 import { TICKETS_PAGE_QUERY } from "@/sanity/queries/pages";
 import { TicketsPageQuery } from "@/types/ticketsPage";
+import { getMetadata } from "@/utils/getMetadata";
 import Link from "next/link";
 import React from "react";
+
+export const generateMetadata = async () => getMetadata("ticketsPage");
 
 async function Page() {
   const { data: ticketsPage }: { data: TicketsPageQuery } = await sanityFetch({
